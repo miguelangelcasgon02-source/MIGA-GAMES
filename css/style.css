@@ -1,0 +1,588 @@
+/* CONFIGURACIÓN GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Franklin Gothic Medium';
+    background-color: #080808;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* ENCABEZADO */
+.encabezado {
+    height: 80px;
+    padding: 0 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #010101;
+    border-bottom: 1px solid #222;
+    position: relative;
+    z-index: 100;
+}
+
+/* LOGO */
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: #e07700;
+}
+
+/* NAV */
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #05f639;
+}
+
+/* HERO*/
+.hero {
+    min-height: 600px;
+    padding: 70px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    overflow: hidden;
+    background-color: #000000;
+}
+
+/* OVERLAY OSCURO PARA QUE EL TEXTO SE LEA SOBRE EL SLIDER */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg,
+            rgba(0, 0, 0, 0.85) 0%,
+            rgba(0, 0, 0, 0.60) 35%,
+            rgba(0, 0, 0, 0.35) 65%,
+            rgba(0, 0, 0, 0.05) 100%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* CONTENIDO DEL HERO */
+.hero-contenido {
+    width: 45%;
+    max-width: 550px;
+    position: relative;
+    z-index: 20;
+}
+
+/* SUBTÍTULO */
+.subtitulo {
+    color: #e08a00;
+    font-weight: bold;
+    letter-spacing: 4px;
+    margin-bottom: 0;
+}
+
+/* TÍTULO */
+.hero h1 {
+    font-size: 80px;
+    line-height: 0.9;
+    margin: 20px 0;
+}
+
+/* TEXTO */
+.hero-contenido>p:not(.subtitulo) {
+    color: #cccccc;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 450px;
+}
+
+/*BOTÓN PRINCIPAL*/
+.boton {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #f18407;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+    border-radius: 20px;
+}
+
+.boton:hover {
+    background-color: rgb(9, 245, 48);
+    color: black;
+}
+
+/* COVER FLOW COMO FONDO COMPLETO */
+.hero-slider {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1200px;
+    z-index: 1;
+}
+
+/*IMÁGENES DEL COVER FLOW */
+.slider-item {
+    position: absolute;
+    width: 230px;
+    height: 330px;
+    overflow: hidden;
+    background-color: #111;
+    border: 2px solid #222;
+    border-radius: 2px;
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.8);
+    animation:
+        coverFlow 15s infinite ease-in-out;
+    will-change: transform, opacity;
+}
+
+/* IMAGEN */
+.slider-item img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* BRILLO NARANJA */
+.slider-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(135deg,
+            rgba(224, 119, 0, 0.35),
+            transparent 50%);
+    pointer-events: none;
+}
+
+/* COVER FLOW AUTOMÁTICO*/
+@keyframes coverFlow {
+
+    /* POSICIÓN INICIAL (fuera, izquierda) */
+    0% {
+        transform:
+            translateX(-380px) translateZ(-250px) rotateY(45deg) scale(0.60);
+        opacity: 0;
+        z-index: 1;
+    }
+
+    /* ENTRA POR LA IZQUIERDA*/
+    20% {
+        transform:
+            translateX(-260px) translateZ(-100px) rotateY(35deg) scale(0.75);
+        opacity: 0.65;
+        z-index: 3;
+    }
+
+    /* LLEGA AL CENTRO*/
+    45% {
+        transform:
+            translateX(0) translateZ(100px) rotateY(0deg) scale(1);
+        opacity: 1;
+        z-index: 10;
+        border-color: #e09200;
+        box-shadow: 0 0 30px rgb(224, 119, 0), 0 25px 60px rgba(0, 0, 0, 0.9);
+    }
+
+    /* SALE HACIA LA DERECHA*/
+    75% {
+        transform:
+            translateX(260px) translateZ(-100px) rotateY(-35deg) scale(0.75);
+        opacity: 0.65;
+        z-index: 3;
+        border-color: #222;
+        box-shadow:
+            0 20px 50px rgba(0, 0, 0, 0.8);
+    }
+
+    /* DESAPARECE (fuera, derecha) — enlaza directo con el 0% del siguiente ciclo*/
+    100% {
+        transform:
+            translateX(380px) translateZ(-250px) rotateY(-45deg) scale(0.60);
+        opacity: 0;
+        z-index: 1;
+    }
+}
+
+/*  RETRASO ENTRE IMÁGENES — repartido en tercios exactos (15s / 3 = 5s)*/
+.slider-1 {
+    animation-delay: 0s;
+    border-radius: 20px;
+}
+
+.slider-2 {
+    animation-delay: -5s;
+    border-radius: 20px;
+}
+
+.slider-3 {
+    animation-delay: -10s;
+    background-color: #ffffff;
+    border-radius: 20px;
+}
+
+/* SECCIÓN JUEGOS*/
+.juegos {
+    padding: 80px 7%;
+}
+
+/* TÍTULO */
+.juegos h2,
+.Redes h2 {
+    text-align: center;
+    font-size: 35px;
+    margin-bottom: 50px;
+}
+
+/* CONTENEDOR */
+.contenedor-juegos {
+    display: grid;
+    grid-template-columns:
+        repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* TARJETAS */
+.tarjeta {
+    background-color: #070707;
+    border: 1px solid #2ee370;
+    transition: 0.3s;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.tarjeta:hover {
+    transform: translateY(-10px);
+    border-color: #e09200;
+}
+
+/* IMAGEN */
+.tarjeta img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    background-color: #cccccc;
+}
+
+/* INFORMACIÓN */
+.informacion {
+    padding: 25px;
+}
+
+.informacion h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.informacion p {
+    color: #999;
+    margin-bottom: 20px;
+}
+
+.informacion strong {
+    display: block;
+    font-size: 20px;
+    color: #e09900;
+    margin-bottom: 20px;
+}
+
+/*BOTÓN Descargas (ahora es un label que abre el modal)*/
+.boton-Descargar {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #e09200;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 20px;
+}
+
+.boton-Descargar:hover {
+    background-color: #e07f00;
+}
+
+/*NOSOTROS*/
+.Sobre-Nosotros {
+    padding: 100px 20%;
+    text-align: center;
+    background-color: #0d0d0d;
+}
+
+.Sobre-Nosotros {
+    color: #aaa;
+    line-height: 1.8;
+}
+
+/*FOOTER*/
+footer {
+    padding: 40px;
+    text-align: center;
+    background-color: #050505;
+    color: #777;
+}
+
+footer h3 {
+    color: white;
+    margin-bottom: 15px;
+}
+
+/*MODALES DE DESCARGA*/
+
+/* checkbox oculto */
+.modal-toggle {
+    display: none !important;
+}
+
+/* overlay oculto por defecto */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    cursor: pointer;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #111;
+    color: white;
+    border: 1px solid #e09200;
+    padding: 25px 30px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
+    z-index: 10000;
+    text-align: left;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+.modal-content h3 {
+    color: #e09900;
+    margin-bottom: 15px;
+}
+
+.modal-content p {
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #e09900;
+    cursor: pointer;
+}
+
+.btn-close {
+    display: inline-block;
+    background-color: #e08600;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-close:hover {
+    background-color: white;
+    color: black;
+}
+
+/* activar cada modal por separado */
+#modal-1:checked~#modal-1-1,
+#modal-2:checked~#modal-2-2,
+#modal-3:checked~#modal-3-3 {
+    visibility: visible;
+    opacity: 1;
+}
+
+#modal-1:checked~#modal-1-1 .modal-content,
+#modal-2:checked~#modal-2-2 .modal-content,
+#modal-3:checked~#modal-3-3 .modal-content {
+    transform: translateY(0);
+}
+
+/* RESPONSIVE - TABLET */
+@media (max-width: 1000px) {
+
+    .encabezado {
+        padding: 0 5%;
+    }
+
+    .hero {
+        padding: 70px 5%;
+    }
+
+    .hero h1 {
+        font-size: 65px;
+    }
+
+    .slider-item {
+        width: 190px;
+        height: 280px;
+    }
+
+    .contenedor-juegos {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+}
+
+/* RESPONSIVE - MÓVIL */
+@media (max-width: 800px) {
+
+    /* HEADER */
+    .encabezado {
+        flex-direction: column;
+        height: auto;
+        padding: 25px;
+        gap: 20px;
+    }
+
+    nav {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* HERO */
+    .hero {
+        min-height: 850px;
+        justify-content: center;
+        text-align: center;
+        padding: 60px 20px;
+    }
+
+    .hero-contenido {
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .hero h1 {
+        font-size: 55px;
+    }
+
+    .hero-contenido>p:not(.subtitulo) {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* SLIDER */
+    .slider-item {
+        width: 170px;
+        height: 250px;
+    }
+
+    /* JUEGOS */
+    .contenedor-juegos {
+        grid-template-columns: 1fr;
+    }
+
+    /* NOSOTROS */
+    .Sobre-Nosotros {
+        padding: 80px 10%;
+    }
+}
+
+/* RESPONSIVE - TELÉFONOS PEQUEÑOS */
+@media (max-width: 500px) {
+
+    .logo {
+        font-size: 22px;
+    }
+
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+    .hero {
+        min-height: 780px;
+    }
+
+    .hero h1 {
+        font-size: 45px;
+    }
+
+    .slider-item {
+        width: 145px;
+        height: 215px;
+    }
+
+    .juegos {
+        padding: 60px 5%;
+    }
+
+    .juegos h2,
+    .Sobre-Nosotros h2 {
+        font-size: 28px;
+    }
+}
+
+/* REDUCIR ANIMACIONES SI EL USUARIO
+LO SOLICITA EN SU SISTEMA */
+@media (prefers-reduced-motion: reduce) {
+
+    .slider-item {
+        animation: none;
+        opacity: 1;
+        transform:
+            translateX(0) translateZ(0) rotateY(0) scale(0.85);
+    }
+}

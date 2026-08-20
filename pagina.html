@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiGa-Games</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" href="./img/IMG_1199.PNG">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css"
+        integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    .hero {
+        background-image: url("img/6f5c58cbdb45d470fb21054337bbe0a4\ -\ copia.gif");
+        margin: 0;
+        font-size: 10px;
+        background-position: 70% -250px;
+    }
+</style>
+
+<body>
+    <!-- ENCABEZADO -->
+    <header class="encabezado">
+        <div class="logo">
+            MiGa<span>GAMES</span>
+        </div>
+        <nav>
+            <a href="#">Inicio</a>
+            <a href="#juegos">Juegos</a>
+            <a href="#Sobre-Nosotros">Sobre-Nosotros</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+    <main>
+        <!-- HERO -->
+        <section class="hero">
+            <!-- TEXTO -->
+            <div class="hero-contenido">
+                <p class="subtitulo">
+                    BIENVENIDO A
+                </p>
+                <h1>
+                    MiGa<br>GAMES
+                </h1>
+
+                <p>
+                    Descubre los mejores videojuegos
+                    y encuentra tu próxima aventura.
+                </p>
+                <a href="#juegos" class="boton">
+                    VER JUEGOS
+                </a>
+            </div>
+            <!-- COVER FLOW -->
+            <div class="hero-slider">
+                <div class="slider-item slider-1">
+                    <img src="./img/BH54FVWW2BKE3FX7MX2TOXXVHM.png" alt="PLAYSTATION">
+                </div>
+                <div class="slider-item slider-2">
+                    <img src="./img/images3.png">
+                </div>
+                <div class="slider-item slider-3">
+                    <img src="./img/pngwing.com.png">
+                </div>
+            </div>
+        </section>
+        <!-- EMULADORES -->
+        <section class="juegos" id="juegos">
+            <h2>
+                EMULADORES
+            </h2>
+            <div class="contenedor-juegos">
+                <!-- EMULADOR 1 -->
+                <article class="tarjeta">
+                    <img src="./img/BH54FVWW2BKE3FX7MX2TOXXVHM.png" alt="PLAYSTATION">
+                    <div class="informacion">
+                        <h3>
+                            PLAYSTATION
+                        </h3>
+                        <p>
+                            Un ecosistema para la accion
+                        </p>
+                        <strong>
+                            DETALLES
+                        </strong>
+                        <label for="modal-1" class="boton-Descargar">
+                            DESCARGAR
+                        </label>
+                    </div>
+                </article>
+                <!-- EMULADOR 2 -->
+                <article class="tarjeta">
+                    <img src="./img/images3.png">
+                    <div class="informacion">
+                        <h3>
+                            NINTENDO
+                        </h3>
+                        <p>
+                            Mas enfocado en en la exploracion y tranquilidad
+                        </p>
+                        <strong>
+                            DETALLES
+                        </strong>
+                        <label for="modal-2" class="boton-Descargar">
+                            DESCARGAR
+                        </label>
+                    </div>
+                </article>
+                <!-- EMULADOR 3 -->
+                <article class="tarjeta">
+                    <img src="./img/pngwing.com.png">
+                    <div class="informacion">
+                        <h3>
+                            PC
+                        </h3>
+                        <p>
+                            se puede encontra de todo tipo de juegos
+                        </p>
+                        <strong>
+                            DETALLES
+                        </strong>
+                        <label for="modal-3" class="boton-Descargar">
+                            DESCARGAR
+                        </label>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <!-- Sobre-Nosotros -->
+        <section class="Sobre-Nosotros" id="Sobre-Nosotros">
+            <h2>
+                SOBRE MiGa-Games
+            </h2>
+            <p>
+                Somos una pagina web sin animos de lucro con el fin de ayudar a las personas puedan descargar su
+                emulador favorito de forma mas sencilla y sin niguntipo de preocupación. Esta pagina ha sido creado por
+                un par de estudiantes del instituto politecnico colombiano con un proposito educativo por: Miguel Angel
+                y Juan Gabriel para la materia dieseño web
+            </p>
+        </section>
+    </main>
+
+    <!-- MODAL JUEGO 1 -->
+    <input type="checkbox" id="modal-1" class="modal-toggle">
+    <div class="modal" id="modal-1-1">
+        <label for="modal-1" class="modal-backdrop"></label>
+        <div class="modal-content">
+            <label for="modal-1" class="modal-close">&times;</label>
+            <h3>PLAYSTATION</h3>
+            <p>Estás a punto de descargar este Emulador. Confirma para continuar.</p>
+            <a href="./emuladores/ePSXe205.zip" class="btn-close" target="_blank" rel="noopener">Descargar emulador</a>
+
+            <a href="./isops.html" class="btn-close" target="_blank" rel="noopener">Descargar ISO</a>
+        </div>
+    </div>
+    <!-- MODAL JUEGO 2 -->
+    <input type="checkbox" id="modal-2" class="modal-toggle">
+    <div class="modal" id="modal-2-2">
+        <label for="modal-2" class="modal-backdrop"></label>
+        <div class="modal-content">
+            <label for="modal-2" class="modal-close">&times;</label>
+            <h3>NINTENDO</h3>
+            <p>Estás a punto de descargar este Emulador. Confirma para continuar.</p>
+            <a href="./emuladores/snes9x-1.63-win32-x64.zip" class="btn-close" target="_blank" rel="noopener">Descargar
+                emulador</a>
+
+            <a href="./nintendoiso.html" class="btn-close" target="_blank" rel="noopener">Descargar ISO</a>
+        </div>
+    </div>
+    <!-- MODAL JUEGO 3 -->
+    <input type="checkbox" id="modal-3" class="modal-toggle">
+    <div class="modal" id="modal-3-3">
+        <label for="modal-3" class="modal-backdrop"></label>
+        <div class="modal-content">
+            <label for="modal-3" class="modal-close">&times;</label>
+            <h3>PC</h3>
+            <p>Estás a punto de descargar un juego de PC Confirma para continuar.</p>
+            <a href="./pcgamer.html" class="btn-close" target="_blank"
+                rel="noopener">Descargar juegos</a>
+        </div>
+    </div>
+    <!-- FOOTER -->
+    <footer id="contacto">
+        <h3>
+            MiGa-Games
+        </h3>
+        <p>
+            © 2026 MiGa-Games - algun aporte para la pagina? copianos al INSTAGRAM (￣y▽￣)╭---: <i class="fa-brands fa-instagram fa-jello" style="color: rgb(179, 17, 75);"> 
+        </i> <i>miga__games.</i>
+        </p>
+    </footer>
+</body>
+</html>
